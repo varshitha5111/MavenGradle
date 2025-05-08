@@ -1,45 +1,27 @@
-apply plugin: 'java'
-apply plugin: 'maven'
-
-group = 'com.example1'
-version = '1.0-SNAPSHOT'
-
-description = """MyMavenToGradle"""
-
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
-
-
-
-repositories {apply plugin: 'java'
-apply plugin: 'maven'
-
-group = 'com.example1'
-version = '1.0-SNAPSHOT'
-
-description = """MyMavenToGradle"""
-
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+plugins {
+    id 'java'
+    id 'application'
+}
 
 repositories {
-        
-     maven { url "https://repo.maven.apache.org/maven2" }
-}
-dependencies {
-    testCompile group: 'junit', name: 'junit', version:'3.8.1'
+    // JCenter is now deprecated, but included since you're using it.
+    // For a modern setup, consider using 'mavenCentral()' instead.
+    jcenter()
+    // mavenCentral() // Recommended alternative
 }
 
-jar {
-    manifest {
-        attributes(
-            'Main-Class': 'com.example.App'
-        )
-    }
-}
-        
-     maven { url "https://repo.maven.apache.org/maven2" }
-}
 dependencies {
-    testCompile group: 'junit', name: 'junit', version:'3.8.1'
+    implementation 'com.google.guava:guava:23.0'
+    testImplementation 'junit:junit:4.12'
+}
+
+application {
+    // If App is in a package, e.g., 'com.example.App', update this line.
+    mainClassName = 'App'
+}
+
+task display {
+    doLast {
+        println 'Hello BIT students'
+    }
 }
